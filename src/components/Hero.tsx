@@ -5,6 +5,7 @@ import { useState, useEffect } from 'react';
 export function Hero() {
   const { ref, isVisible } = useScrollAnimation(0.3);
   const [showScrollIndicator, setShowScrollIndicator] = useState(true);
+  const [isAvatarHovered, setIsAvatarHovered] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -60,13 +61,17 @@ export function Hero() {
         }`}
       >
         {/* Profile image with glassmorphism */}
-        <div className="mb-8 inline-block relative group">
+        <div 
+          className="mb-8 inline-block relative group"
+          onMouseEnter={() => setIsAvatarHovered(true)}
+          onMouseLeave={() => setIsAvatarHovered(false)}
+        >
           <div className="absolute -inset-1 bg-gradient-to-r from-white via-gray-300 to-white rounded-full blur opacity-60 group-hover:opacity-90 transition duration-1000 group-hover:duration-200 animate-pulse"></div>
           <div className="relative">
             <img
-              src="/claw.jpg"
+              src="https://i.ibb.co/KxpmT8VZ/claw.jpg"
               alt="Profile Avatar"
-              className="w-36 h-36 rounded-full border-4 border-black shadow-2xl object-cover relative z-10"
+              className="w-36 h-36 rounded-full border-4 border-black shadow-2xl object-cover relative z-10 group-hover:animate-shake"
             />
             <div className="absolute -bottom-2 -right-2 bg-gradient-to-r from-white to-gray-200 rounded-full p-2 shadow-lg">
               <Sparkles className="w-5 h-5 text-black" />
@@ -82,8 +87,12 @@ export function Hero() {
         {/* Subtitle with glassmorphism badge */}
         <div className="inline-block mb-8">
           <div className="backdrop-blur-md bg-white/5 border border-white/10 rounded-full px-8 py-3 shadow-2xl">
-            <p className="text-lg md:text-xl text-gray-300 font-light tracking-wide">
-              Full-Stack Developer & Novice Gamer
+            <p className={`text-lg md:text-xl font-light tracking-wide transition-all duration-300 ${
+              isAvatarHovered 
+                ? 'text-red-500 font-bold animate-shake' 
+                : 'text-gray-300'
+            }`}>
+              {isAvatarHovered ? 'AI WILL TAKE OVER THE WORLD!' : 'Full-Stack Developer & Novice Gamer'}
             </p>
           </div>
         </div>
