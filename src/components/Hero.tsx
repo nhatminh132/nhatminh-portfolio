@@ -64,7 +64,7 @@ export function Hero() {
           <div className="absolute -inset-1 bg-gradient-to-r from-white via-gray-300 to-white rounded-full blur opacity-60 group-hover:opacity-90 transition duration-1000 group-hover:duration-200 animate-pulse"></div>
           <div className="relative">
             <img
-              src="https://images.pexels.com/photos/1379636/pexels-photo-1379636.jpeg?auto=compress&cs=tinysrgb&w=400&h=400&fit=crop"
+              src="/claw.jpg"
               alt="Profile Avatar"
               className="w-36 h-36 rounded-full border-4 border-black shadow-2xl object-cover relative z-10"
             />
